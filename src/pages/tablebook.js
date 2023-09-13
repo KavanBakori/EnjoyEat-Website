@@ -6,44 +6,106 @@ import 'react-slideshow-image/dist/styles.css';
 import Button from '@mui/material/Button';
 import Footer from "./footer";
 import SendIcon from '@mui/icons-material/Send';
-
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { Person } from '@mui/icons-material';
 import shadows from '@mui/material/styles/shadows';
 import { Allres } from './quality';
+import { Carousel } from './quality';
 import { useLocation } from 'react-router-dom';
-
-
-
-
-
-// import Stack from '@mui/material/Stack';
-
-
 
 
 function Tablebook() {
 
-
   const location = useLocation();
   const name = location.state.name;
+  const [form, setForm] = useState({});
+  const [availableseats, setavailableseats] = useState([]);
 
-  var a = 1;
-  // document.getElementById("persons").innerHTML=1;
 
-  function minus() {
-    if (a > 1) {
-      a = a - 1;
-      document.getElementById("persons").innerHTML = a;
-    }
+  const handleForm = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+      Restaurantname: name,
+    });
+  };
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/availableseats/${name}`)
+      .then(availableseats => {
+        setavailableseats(availableseats.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+
+  const handlesubmit = async (e) => {
+    const response = await fetch('http://localhost:3001/tablebook', {
+      method: 'POST',
+      body: JSON.stringify(form),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+
+    });
+    const data = await response.text();
+    console.log(data);
   }
-  function add() {
 
-    a = a + 1;
-    document.getElementById("persons").innerHTML = a;
 
+  function green() {
+    // Assuming availableseats is an array of objects with an availableseats property
+    const colors = availableseats
+      .filter(seat => seat.resname === name)
+      .map(seat => {
+        if ((seat.availableseats*100) / seat.totalpersons >65 && (seat.availableseats*100) / seat.totalpersons <=100 ) {
+          return 'green';
+        } 
+        else  {
+          return '#01450095';
+        }
+      });
+  
+    // Return the first color in the array (or a default color if no matching seats are found)
+    return colors.length > 0 ? colors[0] : 'grey';
+  }
+  function yellow() {
+    // Assuming availableseats is an array of objects with an availableseats property
+    const colors = availableseats
+      .filter(seat => seat.resname === name)
+      .map(seat => {
+        if ((seat.availableseats*100) / seat.totalpersons >=33 && (seat.availableseats*100) / seat.totalpersons <=65 ) {
+          return 'yellow';
+        } 
+        else  {
+          return '#504a0f88';
+        }
+      });
+  
+    // Return the first color in the array (or a default color if no matching seats are found)
+    return colors.length > 0 ? colors[0] : 'grey';
+  }
+  function red() {
+    // Assuming availableseats is an array of objects with an availableseats property
+    const colors = availableseats
+      .filter(seat => seat.resname === name)
+      .map(seat => {
+        if ((seat.availableseats*100) / seat.totalpersons >=0 && (seat.availableseats*100) / seat.totalpersons <33 ) {
+          return 'red';
+        } 
+        else  {
+          return '#500f0f88';
+        }
+      });
+  
+    // Return the first color in the array (or a default color if no matching seats are found)
+    return colors.length > 0 ? colors[0] : 'grey';
   }
 
 
@@ -60,146 +122,7 @@ function Tablebook() {
     height: '500px'
   }
 
-  const Carousel = [
-    {
-      h1: "Spice & Slice",
-      url: "images/spice&slice/five.jpg",
-    },
-    {
-      h1: "Spice & Slice",
-      url: "images/spice&slice/five_1.jpg",
-    },
-    {
-      h1: "Spice & Slice",
-      url: "images/spice&slice/five_2.jpg",
-    },
-    {
-      h1: "Spice & Slice",
-      url: "images/spice&slice/five_3.jpg",
-    },
 
-
-    {
-      h1: "Urban Crust",
-      url: "images/UrbanCrust/five.jpg",
-    },
-    {
-      h1: "Urban Crust",
-      url: "images/UrbanCrust/five_1.jpg",
-    },
-    {
-      h1: "Urban Crust",
-      url: "images/UrbanCrust/five_2.jpg",
-    },
-    {
-      h1: "Urban Crust",
-      url: "images/UrbanCrust/five_3.jpg",
-    },
-
-
-    {
-      h1: "Flavor Factory",
-      url: "images/FlavorFactory/five.jpg",
-    },
-    {
-      h1: "Flavor Factory",
-      url: "images/FlavorFactory/five_1.jpg",
-    },
-    {
-      h1: "Flavor Factory",
-      url: "images/FlavorFactory/five_2.jpg",
-    },
-    {
-      h1: "Flavor Factory",
-      url: "images/FlavorFactory/five_3.jpg",
-    },
-
-
-    {
-      h1: "The Hungry Hub",
-      url: "images/TheHungryHub/five.jpg",
-    },
-    {
-      h1: "The Hungry Hub",
-      url: "images/TheHungryHub/five_1.jpg",
-    },
-    {
-      h1: "The Hungry Hub",
-      url: "images/TheHungryHub/five_2.jpg",
-    },
-    {
-      h1: "The Hungry Hub",
-      url: "images/TheHungryHub/five_3.jpg",
-    },
-
-
-    {
-      h1: "Punjabi Junction",
-      url: "images/punjabi/five.jpg",
-    },
-    {
-      h1: "Punjabi Junction",
-      url: "images/punjabi/five_1.jpg",
-    },
-    {
-      h1: "Punjabi Junction",
-      url: "images/punjabi/five_3.jpg",
-    },
-
-
-    {
-      h1: "Chienese Stop",
-      url: "images/chienese/five.jpg",
-    },
-    {
-      h1: "Chienese Stop",
-      url: "images/chienese/five_1.jpg",
-    },
-    {
-      h1: "Chienese Stop",
-      url: "images/chienese/five_2.jpg",
-    },
-    {
-      h1: "Chienese Stop",
-      url: "images/chienese/five_3.jpg",
-    },
-
-
-    {
-      h1: "Pizza House",
-      url: "images/pizza/five.jpg",
-    },
-    {
-      h1: "Pizza House",
-      url: "images/pizza/five_1.jpg",
-    },
-    {
-      h1: "Pizza House",
-      url: "images/pizza/five_2.jpg",
-    },
-    {
-      h1: "Pizza House",
-      url: "images/pizza/five_3.jpg",
-    },
-
-
-    {
-      h1: "Dosa Spot",
-      url: "images/dosaspot/five.jpg",
-    },
-    {
-      h1: "Dosa Spot",
-      url: "images/dosaspot/five_1.jpg",
-    },
-    {
-      h1: "Dosa Spot",
-      url: "images/dosaspot/five_2.jpg",
-    },
-    {
-      h1: "Dosa Spot",
-      url: "images/dosaspot/five_3.jpg",
-    },
-  ];
 
   const [rating3, setRating3] = useState(0);
   const [value, setValue] = React.useState(4);
@@ -225,7 +148,7 @@ function Tablebook() {
                     <button>Book now</button>
                   </div>
                   <div style={{ display: 'flex', columnGap: '30px' }}>
-                    <Box
+                    {/* <Box
                       sx={{
                         '& > legend': { mt: 2 },
                       }}
@@ -233,31 +156,33 @@ function Tablebook() {
                       <Rating name="read-only" value={value} readOnly />
                       <Typography component="legend" style={{ color: 'white' }}>{res.rating}</Typography>
 
-                    </Box>
+                    </Box> */}
 
 
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                       <div style={{ display: 'flex', columnGap: '10px' }}>
-                        <div style={{ height: '25px', width: '80px', backgroundColor: 'green', textAlign: 'center', borderRadius: '5px' }}>
+                        <div style={{ height: '25px', width: '80px', backgroundColor: green(), textAlign: 'center', borderRadius: '5px' }}>
                           <h6>Low</h6>
                         </div>
-                        <div style={{ height: '25px', width: '80px', backgroundColor: '#504a0f88', textAlign: 'center', borderRadius: '5px' }}>
+                        <div style={{ height: '25px', width: '80px', backgroundColor: yellow(), textAlign: 'center', borderRadius: '5px' }}>
                           <h6>Medium</h6>
                         </div>
-                        <div style={{ height: '25px', width: '80px', backgroundColor: '#500f0f88', textAlign: 'center', borderRadius: '5px' }}>
+                        <div style={{ height: '25px', width: '80px', backgroundColor: red(), textAlign: 'center', borderRadius: '5px' }}>
                           <h6>High</h6>
                         </div>
                       </div>
                       <p style={{ fontSize: '1vw', color: 'white', textAlign: 'center' }}>Current Queue</p>
                     </div>
+
+                    {availableseats.filter(seat => seat.resname === name).map(seat => <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <h1 style={{ color: 'orange' }}>{seat.availableseats}</h1>
+                      <p style={{ fontSize: '1vw', color: 'white', textAlign: 'center' }}>Availabe Seats</p>
+                    </div>)}
+
                   </div>
                 </div>
               ))}
             </div>
-
-
-
-            {/* <h4 style={{color:'grey'}}>Currently Queue is low may be you need to wait for 30 minuts </h4> */}
           </div>
 
         </section>
@@ -313,28 +238,36 @@ function Tablebook() {
 
 
 
-            <div className='details_form'>
+            <div className='details_form'r>
               <div className="part1">
                 <h1>Enter Your Details</h1>
                 <p>Just Send & Save your time</p>
               </div>
               <div className="part2">
 
-                <input type="text" placeholder='Name' />
-                <input type="text" placeholder='Email' />
-                <input type="text" placeholder='Phone no.' />
+                <input type="text" name="Coustumername" onChange={handleForm} placeholder='Name' />
+                <input type="email" name="Coustumeremail" onChange={handleForm} placeholder='Email' />
+                <input type="number" name="Coustumercall" onChange={handleForm} placeholder='Phone no.' />
+                <input type="number" name="CustomerCount" min='1' onChange={handleForm} placeholder='How many persons you are?' />
 
-                <div style={{ display: 'flex', columnGap: '20px', width: 'fit-content', borderRadius: '100px', alignItems: 'center' }}>
+                {/* <div style={{ display: 'flex', columnGap: '20px', width: 'fit-content', borderRadius: '100px', alignItems: 'center' }}>
                   <p>How many persons you are?</p>
                   <button style={{ borderRadius: '100px', color: 'orange', backgroundColor: '#1c2c52' }} onClick={minus}>-</button>
-                  <h1 id="persons" >1</h1>
+                  <h1
+                    id="persons"
+                    name="CustomerCount"
+                    contentEditable={true}
+                    onBlur={handleForm}
+                  >
+                    {a}
+                  </h1>
                   <button style={{ borderRadius: '100px', color: 'orange', backgroundColor: '#1c2c52' }} onClick={add}>+</button>
-                </div>
+                </div> */}
                 <br />
-                <Button style={{ backgroundColor: 'orange', color: '#1c2c52' }} endIcon={<SendIcon />}>
+                <Button style={{ backgroundColor: 'orange', color: '#1c2c52' }} onClick={handlesubmit} endIcon={<SendIcon />}>
                   Send
                 </Button>
-
+                {/* <p>{JSON.stringify(form)}</p> */}
               </div>
             </div>
 

@@ -26,7 +26,7 @@ const Footer = () => {
           <ul>
             <h2>UseFull Links</h2>
             <br />
-            <li><Link style={{ color: 'grey' }} className="active" to="/login">About</Link></li>
+            <li><Link style={{ color: 'grey' }} className="active" to="">About</Link></li>
             <li><Link style={{ color: 'grey' }} className="active" to="/login">Add Your restaurent</Link></li>
             <br />
             <br />

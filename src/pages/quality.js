@@ -145,4 +145,144 @@ export const Allres = [
 ];
 
 
+export const Carousel = [
+  {
+    h1: "Spice & Slice",
+    url: "images/spice&slice/five.jpg",
+  },
+  {
+    h1: "Spice & Slice",
+    url: "images/spice&slice/five_1.jpg",
+  },
+  {
+    h1: "Spice & Slice",
+    url: "images/spice&slice/five_2.jpg",
+  },
+  {
+    h1: "Spice & Slice",
+    url: "images/spice&slice/five_3.jpg",
+  },
+
+
+  {
+    h1: "Urban Crust",
+    url: "images/UrbanCrust/five.jpg",
+  },
+  {
+    h1: "Urban Crust",
+    url: "images/UrbanCrust/five_1.jpg",
+  },
+  {
+    h1: "Urban Crust",
+    url: "images/UrbanCrust/five_2.jpg",
+  },
+  {
+    h1: "Urban Crust",
+    url: "images/UrbanCrust/five_3.jpg",
+  },
+
+
+  {
+    h1: "Flavor Factory",
+    url: "images/FlavorFactory/five.jpg",
+  },
+  {
+    h1: "Flavor Factory",
+    url: "images/FlavorFactory/five_1.jpg",
+  },
+  {
+    h1: "Flavor Factory",
+    url: "images/FlavorFactory/five_2.jpg",
+  },
+  {
+    h1: "Flavor Factory",
+    url: "images/FlavorFactory/five_3.jpg",
+  },
+
+
+  {
+    h1: "The Hungry Hub",
+    url: "images/TheHungryHub/five.jpg",
+  },
+  {
+    h1: "The Hungry Hub",
+    url: "images/TheHungryHub/five_1.jpg",
+  },
+  {
+    h1: "The Hungry Hub",
+    url: "images/TheHungryHub/five_2.jpg",
+  },
+  {
+    h1: "The Hungry Hub",
+    url: "images/TheHungryHub/five_3.jpg",
+  },
+
+
+  {
+    h1: "Punjabi Junction",
+    url: "images/punjabi/five.jpg",
+  },
+  {
+    h1: "Punjabi Junction",
+    url: "images/punjabi/five_1.jpg",
+  },
+  {
+    h1: "Punjabi Junction",
+    url: "images/punjabi/five_3.jpg",
+  },
+
+
+  {
+    h1: "Chienese Stop",
+    url: "images/chienese/five.jpg",
+  },
+  {
+    h1: "Chienese Stop",
+    url: "images/chienese/five_1.jpg",
+  },
+  {
+    h1: "Chienese Stop",
+    url: "images/chienese/five_2.jpg",
+  },
+  {
+    h1: "Chienese Stop",
+    url: "images/chienese/five_3.jpg",
+  },
+
+
+  {
+    h1: "Pizza House",
+    url: "images/pizza/five.jpg",
+  },
+  {
+    h1: "Pizza House",
+    url: "images/pizza/five_1.jpg",
+  },
+  {
+    h1: "Pizza House",
+    url: "images/pizza/five_2.jpg",
+  },
+  {
+    h1: "Pizza House",
+    url: "images/pizza/five_3.jpg",
+  },
+
+
+  {
+    h1: "Dosa Spot",
+    url: "images/dosaspot/five.jpg",
+  },
+  {
+    h1: "Dosa Spot",
+    url: "images/dosaspot/five_1.jpg",
+  },
+  {
+    h1: "Dosa Spot",
+    url: "images/dosaspot/five_2.jpg",
+  },
+  {
+    h1: "Dosa Spot",
+    url: "images/dosaspot/five_3.jpg",
+  },
+];
 

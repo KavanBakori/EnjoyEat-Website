@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 function Header() {
+  
   return (
     <header>
 
@@ -19,8 +22,8 @@ function Header() {
 
         {/* <button className="button2" >Sign Up</button>
       <button >Log In</button> */}
-      <button>Sign Up</button>
-      <button>Login</button>
+      {/* <button>Sign Up</button>
+      <button >Login</button> */}
         <i className="fas fa-phone" style={{ color: 'orange' }}></i>
       </div>
     </header>

@@ -134,7 +134,7 @@ button:hover {
 
 .container1 h1::after {
   display: block;
-  content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, dolorem?';
+  content: 'Don\'t worry just Join Us and Skip the Waiting Line.';
   color: rgb(213, 213, 213);
   font-size: 1vw;
 }
@@ -322,39 +322,6 @@ input::placeholder {
   filter: brightness(50%);
 }
 
-.button1 {
-  appearance: none;
-  background-color: #1c2c52;
-  /* border: 2px solid #1A1A1A; */
-  border-radius: 5px;
-  /* box-sizing: border-box; */
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0;
-  min-height: 60px;
-  min-width: 0;
-  outline: none;
-  margin-bottom: 20px;
-  /* padding: 16px 24px; */
-  text-align: center;
-  text-decoration: none;
-  /* transition: all 300ms cubic-bezier(.23, 1, 0.32, 1); */
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 40%;
-  height: 10px;
-  will-change: transform;
-}
-
-.button1:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0 5px 8px;
-  transform: translateY(-2px);
-  border: 1px solid black;
-  color: black;
-}
 
 
 
@@ -761,7 +728,7 @@ input {
   column-gap: 30px;
   justify-content: center;
 } */
-.form{
+.form {
   color: #1c2c52;
   position: relative;
   max-width: 1000px;
@@ -770,14 +737,22 @@ input {
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
+
 .form .input-box {
   width: 100%;
   margin-top: 20px;
   margin-right: 40px;
 }
+
 .input-box label {
   color: #333;
 }
+
+.input-box button {
+  /* color: #333; */
+  width: 100%;
+}
+
 .form :where(.input-box input, .select-box) {
   /* position: relative; */
   height: 50px;
@@ -790,43 +765,54 @@ input {
   border-radius: 6px;
   padding: 0 15px;
 }
+
 .input-box input:focus {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
+
 .form .column {
   display: flex;
   column-gap: 15px;
 }
+
 .form .gender-box {
   margin-top: 20px;
 }
+
 .gender-box h3 {
   color: #333;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 8px;
 }
+
 .form :where(.gender-option, .gender) {
   display: flex;
   align-items: center;
   column-gap: 50px;
   flex-wrap: wrap;
 }
+
 .form .gender {
   column-gap: 5px;
 }
+
 .gender input {
   accent-color: orange;
 }
+
 .form :where(.gender input, .gender label) {
   cursor: pointer;
 }
+
 .gender label {
   color: #707070;
 }
+
 .address :where(input, .select-box) {
   margin-top: 15px;
 }
+
 .select-box select {
   height: 100%;
   width: 100%;
@@ -862,7 +848,7 @@ input {
   row-gap: 30px;
   justify-content: center;
   display: flex;
-  /* text-align: center; */
+  text-align: left;
   flex-wrap: wrap;
   /* margin-inline: 20px; */
 }
@@ -870,12 +856,11 @@ input {
 .allbox {
   display: flex;
   padding: 10px;
-  text-align: left;
   column-gap: 20px;
   /* flex-direction: column; */
-  row-gap: 40px;
+  row-gap: 4px;
   /* height: 400px; */
-  width: 45%;
+  width: 70%;
   /* padding: 10px; */
   /* border-radius: 20px; */
   /* background-color: #000000; */
@@ -926,6 +911,59 @@ input {
 
 .image:hover .image__overlay>* {
   transform: translateY(0);
+}
+
+
+.colall {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* align-items: center; */
+  /* justify-content: center; */
+  row-gap: 10px;
+}
+
+.colall p{
+  color:black;
+  font-size:18rm;
+  
+}
+
+.colall p span{
+  color:grey;
+}
+
+
+.button1 {
+  appearance: none;
+  background-color: #1c2c52;
+  /* border: 2px solid #1A1A1A; */
+  border-radius: 5px;
+  /* box-sizing: border-box; */
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  min-height: 60px;
+  width: 15vw;
+  outline: none;
+  margin-bottom: 20px;
+  /* padding: 16px 24px; */
+  text-align: center;
+  text-decoration: none;
+  /* transition: all 300ms cubic-bezier(.23, 1, 0.32, 1); */
+  user-select: none;
+  -webkit-user-select: none;
+  height: 10px;
+  will-change: transform;
+}
+
+.button1:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 5px 8px;
+  transform: translateY(-2px);
+  border: 1px solid black;
+  color: black;
 }
 
 
@@ -1109,11 +1147,88 @@ input {
   padding: 10px;
 }
 
-.part2 {
-  /* margin-left: 20px; */
-
-}
-
 .part2 input {
   width: 700px;
+}
+
+
+
+
+
+
+
+/* ************************************  admin ****************************************************************************** */
+
+.admin-container {
+  display: flex;
+}
+
+.sidenav {
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  width: 30vw;
+  /* z-index: -1; */
+  background-color: #f1f1f1;
+  /* position: fixed; */
+  height: 700px;
+  overflow: auto;
+}
+
+
+
+
+.scrollable-container {
+  padding: 20px;
+  height: 700px;
+  /* You can adjust the height as needed */
+  width: 100%;
+  /* You can adjust the height as needed */
+  overflow-y: scroll;
+}
+
+
+
+.requestbox {
+  padding: 30px;
+  margin: auto;
+  /* margin-right: 40px; */
+  /* height: 100px; */
+  width: 50vw;
+  border-radius: 20px;
+  /* background-color: #1c2c52; */
+  box-shadow: 0 0 10px 0 rgb(222, 222, 222);
+}
+
+
+
+/* ************************ history ************************************************************** */
+
+table{
+  margin: auto;
+  width: 80vw;
+}
+
+thead{
+  background-color: orange;
+}
+
+th{
+  padding: 10px;
+  font-size: 20px;
+}
+tr{
+  text-align: center;
+}
+td{
+  color: #000000;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+td a:hover{
+  color: #002ee6;
+}
+td a{
+  color: black;
 }

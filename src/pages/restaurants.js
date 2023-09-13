@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './header';
 import Footer from './footer';
 import { Allres } from './quality';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 function All() {
   const navigate = useNavigate();
+  const [restaurant,setrestaurant] = useState([]);
+  const [name,setname] = useState('');
 
   function gototablebook(name) {
     // Navigate to the Tablebook component with the name state
     navigate("/tablebook", { state: { name: name } });
   }
+
+
+  useEffect(()=>{
+    axios.get('http://localhost:3001/allrestaurants')
+    .then(allres=>{
+      setrestaurant(allres.data);
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+  },[])
 
   return (
     <>
@@ -20,19 +35,25 @@ function All() {
         <button style={{ marginRight: '250px' }}><i className="fas fa-search"></i></button>
       </div>
       <div className="allboxes" style={{ marginTop: '50px', marginBottom: '50px' }}>
-        {Allres.map((item, index) => (
+        {restaurant.map((item, index) => (
           <div className="allbox">
-            <div className="image" style={{ width: '440px' }}>
-              <img className="image__img" src={item.img} />
+            {Allres.filter((res)=> res.h1===item.resname).map((res)=>
+            <div className="image" >
+              <img className="image__img" style={{ width: '440px'}} src={res.img} />
               <div className="image__overlay">
-                {/* <button type="button" class="btn btn-outline-light ">Show More</button> */}
               </div>
             </div>
-            <div className="col">
-              <h1>{item.h1}</h1>
-              <p>{item.p}</p>
+              )}
+            <div className="colall">
+             <span> <h1>{item.resname}</h1></span>
+             <p>{item.tagline}</p>
+             <hr />
+              <p >Timing: <span >{item.opentime} to {item.closetime} </span>  </p>
+              <p> Address : <span> {item.resaddress}  {item.rescity}, {item.respin} {item.resstate} </span></p>
+              <p>Available types of food: <span> {item.food.join(', ')} </span></p>
+            <p style={{color:'red'}}>Currently only <span style={{color:'red'}} > {item.availableseats}</span>  seats available</p>
               {/* Pass an arrow function to the onClick prop */}
-              <button className="button1" onClick={() => gototablebook(item.h1)} style={{ fontSize: '16px', width: '50%' }}>Book Table</button>
+              <button className="button1" onClick={() => gototablebook(item.resname)}>Book Table</button>
             </div>
           </div>
         ))}
