@@ -1,22 +1,23 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import './footer.css'
 
 
 
 const Footer = () => {
   return (
     <>
-      <div style={{ display: 'flex', marginTop: '300px', backgroundColor: '#0f172b', padding: '50px', justifyContent: 'space-between' }}>
+      <div id="footer" style={{ display: 'flex', marginTop: '300px', backgroundColor: '#0f172b', padding: '50px', justifyContent: 'space-between' }}>
         <div className="col1">
           <h1><span>Enjoy </span>Eat </h1>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem tempora aliquam similique consectetur debitis obcaecati ea, fugit alias soluta nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, amet.</p>
+          <p>Elevate your dining experience with Enjoy Eat, a cutting-edge restaurant queue management system that lets you savor your meal stress-free, ensuring you make the most of your time at your favorite eatery</p>
 
           <div style={{ display: 'flex', columnGap: '10px' }}>
-            <img src={require('../images/phone-call.png')} alt="" /> <br />
+            <img src={require('../../images/phone-call.png')} alt="" /> <br />
             <span>  8927829001</span>
           </div>
           <div style={{ display: 'flex', columnGap: '20px' }}>
-            <img src={require('../images/email.png')} alt="" />
+            <img src={require('../../images/email.png')} alt="" />
             <span>  lorem123@gmail.com</span>
 
 
@@ -34,10 +35,10 @@ const Footer = () => {
             <br />
 
             <div style={{ display: 'flex', columnGap: '20px' }}>
-              <img src={require('../images/instagram.png')} alt="" />
-              <img src={require('../images/twitter.png')} alt="" />
-              <img src={require('../images/telegram.png')} alt="" />
-              <img src={require('../images/facebook.png')} alt="" />
+              <img src={require('../../images/instagram.png')} alt="" />
+              <img src={require('../../images/twitter.png')} alt="" />
+              <img src={require('../../images/telegram.png')} alt="" />
+              <img src={require('../../images/facebook.png')} alt="" />
             </div>
 
 

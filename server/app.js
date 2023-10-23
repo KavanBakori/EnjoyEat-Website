@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { User, Authuser, Restaurant, Requests,History, connectToDatabase } = require('./dbschemas'); // Import User, Authuser models and connectToDatabase function
 const app = express();
+const nodemailer = require("nodemailer");
 
 connectToDatabase(); // Connect to the database
 
@@ -85,8 +86,6 @@ app.get('/admin/:resname', async (req, res) => {
     }
   });
 
-
-
 app.get('/availableseats/:resname', async (req, res) => {
     try {
         const resname = req.params.resname; // Get the restaurant name from the URL parameter
@@ -110,7 +109,7 @@ app.get('/allrestaurants', async (req, res) => {
   });
   
 
-  app.put('/updateseats/:resname', async (req, res) => {
+app.put('/updateseats/:resname', async (req, res) => {
     try {
         const resname = req.params.resname; // Get the restaurant name from the URL parameter
         const newAvailableSeats = req.body.availableseats; // Get the new available seats value from the request body
@@ -131,6 +130,8 @@ app.get('/allrestaurants', async (req, res) => {
 
 app.post('/history',async(req,res)=>{
    try{
+
+   
     const { name, email, call,persons,Restaurantname } = req.body;
     const final = new History({
 
@@ -140,7 +141,32 @@ app.post('/history',async(req,res)=>{
         persons:persons,
         Restaurantname:Restaurantname
     })
-
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+          user: 'kavan2269@gmail.com',
+          pass: 'lkbg cjvz yxab wgbl'
+      }
+  });
+  const mailOption = {
+    from: 'kavan2269@gmail.com',
+    to: email,
+    subject: 'From EnjoyEat',
+    html: '<p> Hello ' + name + ' </br> <h1>Please come after 10 minutes. </h1> </br> <p>Elevate your dining experience with Enjoy Eat, a cutting-edge restaurant queue management system that lets you savor your meal stress-free, ensuring you make the most of your time at your favorite eatery</P> <p>' 
+}
+// console.log(mailOption);
+transporter.sendMail(mailOption, function (error, info) {
+    if (error) {
+        console.log(error);
+    }
+    else {
+        console.log("Email sent");
+    }
+});
+       
     const result = await final.save();
     const deletedEntry = await Requests.findOneAndDelete({ name, email, call,Restaurantname });
     if (deletedEntry) {
@@ -154,7 +180,6 @@ app.post('/history',async(req,res)=>{
    }
 
 })
-
 
 app.get('/fetchhistory/:resname', async (req,res)=>{
    try{

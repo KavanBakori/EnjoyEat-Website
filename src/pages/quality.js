@@ -3,22 +3,22 @@ export const Quality = [
   {
     img: "images/hotel.png",
     h2: "Best Restaurants",
-    p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, qui?",
+    p: "Discover top-notch dining experiences at the best restaurants in town",
   },
   {
     img: "images/cutlery.png",
     h2: "High Quality Food",
-    p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, qui?",
+    p: "Indulge in high-quality cuisine that's sure to satisfy your taste buds",
   },
   {
     img: "images/save-time.png",
     h2: "Save Time",
-    p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, qui?",
+    p: "Save time and enjoy great food at our 24/7 service restaurants",
   },
   {
     img: "images/24-hours-support.png",
     h2: "24/7 Services",
-    p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, qui?",
+    p: "24/7 restaurant services for delicious meals anytime you want.",
   },
 ];
 
@@ -28,22 +28,22 @@ export const restaurent = [
   {
     img: "images/pizza/five.jpg",
     h1: "Pizza House",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Experience a slice of perfection at Pizza House, where every bite is a taste of Italian heaven",
   },
   {
     img: "images/spice&slice/five.jpg",
     h1: "Spice & Slice",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Spice up your taste buds and savor the perfect slices at Spice & Slice",
   },
   {
     img: "images/UrbanCrust/five.jpg",
     h1: "Urban Crust",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Indulge in contemporary flavors and urban vibes at Urban Crust",
   },
   {
     img: "images/dosaspot/five.jpg",
     h1: "Dosa Spot",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Discover a world of South Indian delights at Dosa Spot",
   },
 ]
 
@@ -52,7 +52,7 @@ export const Allres = [
   {
     img: "images/pizza/five.jpg",
     h1: "Pizza House",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Experience a slice of perfection at Pizza House, where every bite is a taste of Italian heaven",
     rating: "4.2 Rating",
     about: "We've beem making healthy food last for 10 years",
     aboutdetails: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse abeos omnis, nobis dignissimos perferendis et officia architecto,fugiat possimus eaque qui ullam excepturi suscipit aliquid optio,maiores praesentium soluta alias asperiores saepe commodiconsequatur? Perferendis est placeat facere aspernatur!",
@@ -63,7 +63,7 @@ export const Allres = [
   {
     img: "images/dosaspot/five.jpg",
     h1: "Dosa Spot",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Discover a world of South Indian delights at Dosa Spot",
     rating: "4.5 Rating",
     about: "We've beem making healthy food last for 10 years",
     aboutdetails: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse abeos omnis, nobis dignissimos perferendis et officia architecto,fugiat possimus eaque qui ullam excepturi suscipit aliquid optio,maiores praesentium soluta alias asperiores saepe commodiconsequatur? Perferendis est placeat facere aspernatur!",
@@ -98,7 +98,7 @@ export const Allres = [
   {
     img: "images/spice&slice/five.jpg",
     h1: "Spice & Slice",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Spice up your taste buds and savor the perfect slices at Spice & Slice",
     rating: "4.0 Rating",
     about: "We've beem making healthy food last for 10 years",
     aboutdetails: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse abeos omnis, nobis dignissimos perferendis et officia architecto,fugiat possimus eaque qui ullam excepturi suscipit aliquid optio,maiores praesentium soluta alias asperiores saepe commodiconsequatur? Perferendis est placeat facere aspernatur!",
@@ -109,7 +109,7 @@ export const Allres = [
   {
     img: "images/UrbanCrust/five.jpg",
     h1: "Urban Crust",
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?",
+    p: "Indulge in contemporary flavors and urban vibes at Urban Crust",
     rating: "4.6 Rating",
     about: "We've beem making healthy food last for 10 years",
     aboutdetails: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse abeos omnis, nobis dignissimos perferendis et officia architecto,fugiat possimus eaque qui ullam excepturi suscipit aliquid optio,maiores praesentium soluta alias asperiores saepe commodiconsequatur? Perferendis est placeat facere aspernatur!",

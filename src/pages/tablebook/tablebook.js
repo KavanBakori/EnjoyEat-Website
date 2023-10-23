@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import Header from './header';
+import Header from '../header/header';
 // import Rating from "react-rating";
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import Button from '@mui/material/Button';
-import Footer from "./footer";
+import Footer from "../footer/footer";
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
-import { Person } from '@mui/icons-material';
-import shadows from '@mui/material/styles/shadows';
-import { Allres } from './quality';
-import { Carousel } from './quality';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import FAQ from '../faq/faq';
+import { Allres } from '../quality';
+import { Carousel } from '../quality';
 import { useLocation } from 'react-router-dom';
+import './tablebook.css'
 
 
 function Tablebook() {
+
+
+  useEffect(() => {
+    AOS.init({
+      // Your configuration options here
+      // duration: 1000,
+      offset: 70,
+    });
+  }, []);
 
   const location = useLocation();
   const name = location.state.name;
@@ -56,6 +64,7 @@ function Tablebook() {
     });
     const data = await response.text();
     console.log(data);
+    alert("Request send successful")
   }
 
 
@@ -64,14 +73,14 @@ function Tablebook() {
     const colors = availableseats
       .filter(seat => seat.resname === name)
       .map(seat => {
-        if ((seat.availableseats*100) / seat.totalpersons >65 && (seat.availableseats*100) / seat.totalpersons <=100 ) {
+        if ((seat.availableseats * 100) / seat.totalpersons > 65 && (seat.availableseats * 100) / seat.totalpersons <= 100) {
           return 'green';
-        } 
-        else  {
+        }
+        else {
           return '#01450095';
         }
       });
-  
+
     // Return the first color in the array (or a default color if no matching seats are found)
     return colors.length > 0 ? colors[0] : 'grey';
   }
@@ -80,14 +89,14 @@ function Tablebook() {
     const colors = availableseats
       .filter(seat => seat.resname === name)
       .map(seat => {
-        if ((seat.availableseats*100) / seat.totalpersons >=33 && (seat.availableseats*100) / seat.totalpersons <=65 ) {
+        if ((seat.availableseats * 100) / seat.totalpersons >= 33 && (seat.availableseats * 100) / seat.totalpersons <= 65) {
           return 'yellow';
-        } 
-        else  {
+        }
+        else {
           return '#504a0f88';
         }
       });
-  
+
     // Return the first color in the array (or a default color if no matching seats are found)
     return colors.length > 0 ? colors[0] : 'grey';
   }
@@ -96,14 +105,14 @@ function Tablebook() {
     const colors = availableseats
       .filter(seat => seat.resname === name)
       .map(seat => {
-        if ((seat.availableseats*100) / seat.totalpersons >=0 && (seat.availableseats*100) / seat.totalpersons <33 ) {
+        if ((seat.availableseats * 100) / seat.totalpersons >= 0 && (seat.availableseats * 100) / seat.totalpersons < 33) {
           return 'red';
-        } 
-        else  {
+        }
+        else {
           return '#500f0f88';
         }
       });
-  
+
     // Return the first color in the array (or a default color if no matching seats are found)
     return colors.length > 0 ? colors[0] : 'grey';
   }
@@ -135,14 +144,14 @@ function Tablebook() {
       <Header />
       <div className="top" id='tablebook_back'>
         <section className="showcase-area" id="showcase">
-          <div className="showcase-container">
+          <div className="showcase-container" data-aos="fade-up">
             <div>
-              {Allres.filter((res) => res.h1 === name).map((res) => (
+              {availableseats.filter((res) => res.resname === name).map((res) => (
                 <div style={{ display: 'flex', flexDirection: 'column', rowGap: '200px', alignItems: 'center' }}>
                   <div>
-                    <h1 style={{ color: "white", fontSize: "4vw" }}>{res.h1}</h1>
+                    <h1 style={{ color: "white", fontSize: "4vw" }}>{res.resname}</h1>
                     <p style={{ color: "grey", fontSize: "1vw" }}>
-                      {res.p}
+                      {res.tagline}
                     </p>
                     <br />
                     <button>Book now</button>
@@ -174,10 +183,10 @@ function Tablebook() {
                       <p style={{ fontSize: '1vw', color: 'white', textAlign: 'center' }}>Current Queue</p>
                     </div>
 
-                    {availableseats.filter(seat => seat.resname === name).map(seat => <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      <h1 style={{ color: 'orange' }}>{seat.availableseats}</h1>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <h1 style={{ color: 'orange' }}>{res.availableseats}</h1>
                       <p style={{ fontSize: '1vw', color: 'white', textAlign: 'center' }}>Availabe Seats</p>
-                    </div>)}
+                    </div>
 
                   </div>
                 </div>
@@ -190,7 +199,7 @@ function Tablebook() {
 
 
       <div>
-        {Allres.filter((res) => res.h1 === name).map((res) => (
+        {availableseats.filter((res) => res.resname === name).map((res) => (
           <div className="booktable">
 
 
@@ -198,21 +207,29 @@ function Tablebook() {
             <div className="boxes2">
               <section id="about">
                 <div class="about-wrapper " style={{ display: 'flex' }}>
-                  <div class="about-text">
-                    <p class="small">About Us</p>
-                    <h2>{res.about}</h2>
+                  <div class="about-text" >
+                    <p class="small" style={{ color: 'orange' }}>About Us</p>
+                    <h2>{res.tagline}</h2>
                     <p>
-                      {res.aboutdetails}
+                      {res.describe}
+                    </p>
+                    <br />
+                    <p style={{ color: 'orange' }}>
+                      Varieties: <span style={{ color: 'black' }}> {res.food.join(', ')} </span>
+                    </p>
+                    <br />
+                    <p style={{ color: 'orange' }}>
+                      Address : <span style={{ color: 'black' }}> {res.resaddress} </span>
                     </p>
                     <br />
                     <div style={{ display: 'flex', columnGap: '10px' }}>
-                      <img src={require('../images/phone-call.png')} width={20} alt="" /> <br />
-                      <span>  {res.phoneno}</span>
+                      <img src={require('../../images/phone-call.png')} width={20} alt="" /> <br />
+                      <span>  {res.rescontact}</span>
                     </div><br />
 
                     <div style={{ display: 'flex', columnGap: '20px' }}>
-                      <img src={require('../images/email.png')} width={20} alt="" />
-                      <span>  {res.email}</span>
+                      <img src={require('../../images/global.png')} width={20} alt="" />
+                      <span>  {res.reswebsite}</span>
 
 
                     </div>
@@ -238,7 +255,7 @@ function Tablebook() {
 
 
 
-            <div className='details_form'r>
+            <div className='details_form' data-aos="fade-up">
               <div className="part1">
                 <h1>Enter Your Details</h1>
                 <p>Just Send & Save your time</p>
@@ -270,15 +287,14 @@ function Tablebook() {
                 {/* <p>{JSON.stringify(form)}</p> */}
               </div>
             </div>
-
-
-
           </div>))}
       </div>
 
 
       <div>
       </div>
+      <br /><br /><br />
+      <FAQ/>
       <Footer />
     </>
 

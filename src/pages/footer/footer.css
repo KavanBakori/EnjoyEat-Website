@@ -1,0 +1,40 @@
+.footer {
+    margin-top: 200px;
+    /* height: 100%; */
+    /* width: 100%; */
+    display: flex;
+    column-gap: 30px;
+    background-color: #0f172b;
+    padding: 30px;
+  }
+  
+  .col1 {
+    display: flex;
+    flex-direction: column;
+    width: 39%;
+    /* text-align: center; */
+    /* justify-content: ; */
+    row-gap: 20px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .col1 h1 span {
+    text-align: left;
+  
+    font-size: 40px;
+    color: orange;
+  }
+  
+  .col1 h1 {
+    font-size: 40px;
+    color: white;
+  }
+  
+  .col1 p {
+    color: #d2d2d2;
+  }
+  
+  .col1 img {
+    width: 20px;
+  
+  }

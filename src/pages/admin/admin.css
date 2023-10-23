@@ -1,0 +1,40 @@
+.admin-container {
+    display: flex;
+  }
+  
+  .sidenav {
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    width: 30vw;
+    /* z-index: -1; */
+    background-color: #f1f1f1;
+    /* position: fixed; */
+    height: 700px;
+    overflow: auto;
+  }
+  
+  
+  
+  
+  .scrollable-container {
+    padding: 20px;
+    height: 700px;
+    /* You can adjust the height as needed */
+    width: 100%;
+    /* You can adjust the height as needed */
+    overflow-y: scroll;
+  }
+  
+  
+  
+  .requestbox {
+    padding: 30px;
+    margin: auto;
+    /* margin-right: 40px; */
+    /* height: 100px; */
+    width: 50vw;
+    border-radius: 20px;
+    /* background-color: #1c2c52; */
+    box-shadow: 0 0 10px 0 rgb(222, 222, 222);
+  }

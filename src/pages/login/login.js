@@ -67,6 +67,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios for making HTTP requests
+import './login.css'
 
 function Login() {
   const navigate = useNavigate();

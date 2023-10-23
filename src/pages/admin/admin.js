@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
-import Header from './header';
-import Footer from './footer';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 import axios from 'axios';
+import './admin.css'
 
 const Admin = () => {
   const location = useLocation();
@@ -115,7 +116,7 @@ const Admin = () => {
           <h1 style={{ textAlign: 'center' }}>All Requests</h1>
           <br />
 
-          <div className="content">
+          <div className="content" style={{display:'flex',flexDirection:'column',rowGap:'20px'}}>
             {allrequest
               .filter(People => People.Restaurantname === resname)
               .map(People => (
@@ -131,7 +132,7 @@ const Admin = () => {
                   <h3>{People.call}</h3>
                   <div style={{ float: 'right', display: 'flex', columnGap: '20px', marginTop: '-20px' }}>
                     <button style={{ backgroundColor: 'green' }} onClick={()=> gotoaccept(People)} >Accept</button>
-                    <button>Send email</button>
+                    {/* <button>Send email</button> */}
                   </div>
                 </div>
               ))

@@ -1,14 +1,24 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import Footer from "./footer";
-import Header from "./header";
-import { Allres, Quality, restaurent } from "./quality"; // Import the named export Quality from qualityData.js
-// import { Restaurent } from "./restaurentData";;
+import Footer from "./footer/footer";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import Header from "./header/header";
+import { Quality, restaurent } from "./quality";
 
-// import { IconName } from "react-icons/fa";
-// import imageSrc from '../images/images.png';
 
 const Index = () => {
+
+  useEffect(() => {
+    AOS.init({
+      // Your configuration options here
+      // duration: 1000,
+      offset: 70,
+    });
+  }, []);
+
+
+  const [search, setsearch]=useState('');
   const navigate = useNavigate();
 
   function gotoallrestaurents() {
@@ -18,7 +28,6 @@ const Index = () => {
 
 
   function gototablebook(name) {
-    // Navigate to the Tablebook component with the name state
     navigate("/tablebook", { state: { name: name } });
   }
   return (
@@ -41,24 +50,24 @@ const Index = () => {
       <div className="wrapper">
         <Header />
 
-        <div className="container1" >
+        <div className="container1" data-aos="zoom-in-up">
           {/* <img src={require('../images/pexels-fauxels-3184183.jpg')} alt="" style={{ objectFit: 'cover', width: '100%', height: '80%' }} /> */}
-          <div style={{ display: 'flex', flexDirection: 'column', rowGap: '50px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', rowGap: '50px',textAlign:'center',margin:'auto' ,alignItems:'center',marginTop:'10%'}}>
             <h1>Are You <span>Hungry?</span></h1>
             <div className="search_box">
-              <input type="text" className="input_search" placeholder="Which Restaurent are you looking for?" />
-              <div className="search_btn"><i className="fas fa-search"></i></div>
+              <input type="text" onChange={(e)=>setsearch(e.target.value)} className="input_search" placeholder="Which Restaurent are you looking for?" />
+              <div className="search_btn" onClick={() => gototablebook(search)}><i className="fas fa-search"></i></div>
             </div>
 
           </div>
-          <img className="" src={require('../images/burger.png')} style={{ width: '600px' }} alt="" />
+          {/* <img className="" src={require('../images/burger.png')} style={{ width: '600px' }} alt="" /> */}
         </div>
       </div>
 
 
       <div className="grid1">
         {Quality.map((item, index) => (
-          <div className="griditems" key={index}>
+          <div className="griditems" key={index} data-aos="zoom-in-up">
             <img src={item.img} alt="" />
             <h2>{item.h2}</h2>
             <p>{item.p}</p>
@@ -69,12 +78,12 @@ const Index = () => {
       </div>
 
 
-      <div className="top">
+      <div className="top" data-aos="fade-up">
         <h1> <span>Top</span> Restaurants</h1>
-
-        <div className="boxes">
+          <span style={{marginTop:'-40px',marginLeft:'60px'}}>Savor the culinary delights of the city's top restaurants for an unforgettable dining experience</span>
+        <div className="boxes" >
           {restaurent.map((item, index) => (
-            <div className="box">
+            <div className="box" data-aos="fade-up">
               <div className="image">
                 <img className="image__img" src={item.img} />
                 <div className="image__overlay">
@@ -92,37 +101,39 @@ const Index = () => {
           ))}
 
         </div>
-        <button onClick={gotoallrestaurents} className="button-28">Show all Restaurants </button>
+        <button onClick={gotoallrestaurents} data-aos="fade-up" className="button-28">Show all Restaurants </button>
       </div>
 
 
-      <div className="food" id="how">
+      <div className="food" id="how" data-aos="fade-up">
         <h1> <span>How</span> it Works</h1>
-        <div className="boxes">
-          <div className="box1">
+        <span style={{marginTop:'-40px',marginLeft:'60px'}}> Discover how it works, step by step, and unlock the magic behind the scenes
+</span>
+        <div className="boxes" >
+          <div className="box1" data-aos="fade-up">
             <h1>1</h1>
             <div className="col">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?</p>
+              <p>Find the perfect restaurant for your cravings and preferences with just a few clicks</p>
             </div>
           </div>
-          <div className="box1">
+          <div className="box1" data-aos="fade-up">
             <h1>2</h1>
             <div className="col">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?</p>
+              <p>Submit your request effortlessly by entering just a few key details</p>
             </div>
 
           </div>
-          <div className="box1">
+          <div className="box1" data-aos="fade-up">
             <h1>3</h1>
             <div className="col">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?</p>
+              <p>Save your precious time by waiting for our email confirmation instead of waiting in line at the restaurant</p>
             </div>
 
           </div>
-          <div className="box1">
+          <div className="box1" data-aos="fade-up">
             <h1>4</h1>
             <div className="col">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ducimus?</p>
+              <p>After receiving our email, simply arrive and indulge in your delightful meal</p>
             </div>
 
           </div>
@@ -130,9 +141,10 @@ const Index = () => {
 
       </div>
 
-      <div className="what" id="food">
+      <div className="what" id="food" data-aos="fade-up">
         <h1> <span>What </span>you want?</h1>
-        <div className="grid">
+        <span style={{marginLeft:'60px'}}>What kind of cuisine are you in the mood for today?</span>
+        <div className="grid" data-aos="fade-up">
           <div className="griditems" >
             {/* <h1 style="color: rgba(254,193,6,255);">7+</h1> */}
             <img id='foodname' src={require('../images/pizza.png')} alt="" />

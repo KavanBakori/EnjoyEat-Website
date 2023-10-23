@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import './register.css'
 
 
 
 
 function Start() {
 
-  const [form, setForm] = useState({ selectedFoods: [] });
+    const [form, setForm] = useState({ selectedFoods: [] });
 
 
   const handleForm = (e) => {
@@ -34,6 +35,22 @@ function Start() {
 
   const handlesubmit = async (e) => {
 
+
+    const requiredFields = document.querySelectorAll('[required]');
+  let isValid = true;
+
+  requiredFields.forEach((field) => {
+    if (!field.value) {
+      isValid = false;
+      // Optionally, you can add error messages or styles to indicate the empty field.
+      field.style.border = '1px solid red';
+    } else {
+      // Reset the error styling if the field is not empty.
+      field.style.border = '';
+    }
+  });
+
+  if (isValid) {
     setCurrentActive(prevActive => {
       const newActive = prevActive + 1;
       return newActive > 4 ? 4 : newActive;
@@ -51,6 +68,12 @@ function Start() {
       const data = await response.text();
       console.log(data);
     }
+  } else {
+    // Display an error message or take other appropriate action.
+    alert('Please fill out all required fields.');
+  }
+
+   
   }
 
 
@@ -74,7 +97,7 @@ function Start() {
 
   return (
     <div className="container" >
-      <p>{JSON.stringify(form)}</p>
+      {/* <p>{JSON.stringify(form)}</p> */}
       <div className="progress-container">
         <div className="progress" style={{ width: `${((currentActive - 1) / 3) * 100}%` }}></div>
         <div className={`circle ${currentActive === 1 ? 'active' : ''}`}>1</div>
@@ -169,34 +192,6 @@ function Start() {
       )}
 
       {currentActive === 2 && (
-        // <div className='first'>
-        //               <h2 id='Personal'>Enter Your Restaurent Details</h2>
-
-
-        //   <input type="text" placeholder="Your Restaurent name" />
-        //   <input type="text" placeholder="Your Tagline(optional)" />
-        //   <h5 >Restaurent Timing</h5>
-        //   <div style={{display:'flex',alignItems:'center'}}>
-        //     <h3>From</h3>
-        //   <input type="text" placeholder="Opening At" />
-        //   <h3>To</h3>
-
-        //   <input type="text" placeholder="Closing At" />
-        //   </div>
-        //   <div style={{display:'flex',alignItems:'center'}}>
-
-        //   <input type="text" placeholder="City" />
-        //   <input type="text" placeholder="Distinct" />
-
-        //   <input type="text"   placeholder="State" />
-        //   </div>
-
-        //   <textarea id="" name="" rows="20" cols="136">Your Restaurent Address</textarea>
-
-
-        // </div>
-
-
         <form action="#" className="form">
           <h1>Details of Your Restaurant </h1>
           <br />
@@ -280,7 +275,7 @@ function Start() {
 
           <div className="column" style={{ alignItems: 'center', justifyContent: 'space-between' }}>
             <h3>Logo of restaurant</h3>
-            <input type="file" placeholder="Enter postal code" required />
+            <input type="file" placeholder="Enter postal code"  />
           </div>
           <div className="column" style={{ alignItems: 'center', justifyContent: 'space-between' }}>
             <h3>How many peoples you can manage?</h3>
@@ -317,31 +312,13 @@ function Start() {
 
           <div className="column" style={{ alignItems: 'center' }}>
             <h3>Enter zip file of restaurant photos</h3>
-            <input type="file" placeholder="Enter postal code" required />
+            <input type="file" placeholder="Enter postal code"  />
           </div>
         </form>
       )}
+
+
       {currentActive === 4 && (
-        // <div className='first'>
-        //                         <h2 id='Personal' style={{color:'green'}}>Pay ₹1000/- for register your Restaurent</h2><br /><br />
-        //                         <h3>Via Bank</h3>
-
-        //   <input type="text" placeholder="Account Number" />
-        //   <input type="text" placeholder="IFSC Code" />
-        //   <hr />
-        //   <h2>or</h2>
-        //   <br />
-        //   <h3>Via UPI</h3>
-        //   <br /><br />
-        //   <div className='payment' style={{display:'flex',alignItems:'center'}}>
-        //   <img src={require('../images/gpay.png')} alt="" />
-        //   <img src={require('../images/Paytm.jpg')} alt="" />
-        //   <img src={require('../images/BHIM.png')} alt="" />
-        //   <img src={require('../images/phonepay.png')} alt="" />
-        //   </div>
-
-        // </div>
-
         <form action="#" className="form">
           <h1 id='Personal' style={{ color: 'green', textAlign: 'center' }}>Pay ₹1000/- for register your Restaurent</h1><br /><br />
 
@@ -363,17 +340,17 @@ function Start() {
             <h3 style={{ textAlign: 'center' }}>Via UPI</h3>
             <br />
             <div className='payment' style={{ display: 'flex', justifyContent: 'center' }}>
-              <img src={require('../images/gpay.png')} alt="" />
-              <img src={require('../images/Paytm.jpg')} alt="" />
-              <img src={require('../images/BHIM.png')} alt="" />
-              <img src={require('../images/phonepay.png')} alt="" />
+              <img src={require('../../images/gpay.png')} alt="" />
+              <img src={require('../../images/Paytm.jpg')} alt="" />
+              <img src={require('../../images/BHIM.png')} alt="" />
+              <img src={require('../../images/phonepay.png')} alt="" />
             </div>
           </div>
 
 
-
         </form>
       )}
+      
       <br /><br />
       <div>
         <button className="btn" id="prev" disabled={currentActive === 1} onClick={handleClickPrev}>Prev</button>

@@ -1,0 +1,28 @@
+table{
+    margin: auto;
+    width: 80vw;
+  }
+  
+  thead{
+    background-color: orange;
+  }
+  
+  th{
+    padding: 10px;
+    font-size: 20px;
+  }
+  tr{
+    text-align: center;
+  }
+  td{
+    color: #000000;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  td a:hover{
+    color: #002ee6;
+  }
+  td a{
+    color: black;
+  }
