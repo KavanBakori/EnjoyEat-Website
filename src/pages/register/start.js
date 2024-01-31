@@ -154,7 +154,7 @@ function Start() {
               </div>
               <div className="gender">
                 <input type="radio" value={'prefer not to say'} id="check-other" onChange={handleForm} name="gender" />
-                <h3 htmlFor="check-other">prefer not to say</h3>
+                <h3 htmlFor="check-other">other</h3>
               </div>
             </div>
           </div>

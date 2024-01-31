@@ -25,9 +25,10 @@ const Footer = () => {
         </div>
         <div className="col1" style={{ alignItems: 'center' }} >
           <ul>
-            <h2>UseFull Links</h2>
+            {/* <h2>UseFull Links</h2> */}
             <br />
-            <li><Link style={{ color: 'grey' }} className="active" to="">About</Link></li>
+            <li><Link style={{ color: 'grey' }} className="active" to="">Help & Support</Link></li>
+            <li><Link style={{ color: 'grey' }} className="active" to="">Partner with us</Link></li>
             <li><Link style={{ color: 'grey' }} className="active" to="/login">Add Your restaurent</Link></li>
             <br />
             <br />

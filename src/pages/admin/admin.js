@@ -13,11 +13,12 @@ const Admin = () => {
   const [allrequest, setrequest] = useState([]);
   const [a, seta] = useState(0);
   const [availableseats, setavailableseats] = useState([]);
+  const [time, settime] = useState(10);
 
 
   const gotoaccept= async (People)=>{
     try {
-      const response = await fetch('http://localhost:3001/history', {
+      const response = await fetch(`http://localhost:3001/history/${time}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,6 +27,7 @@ const Admin = () => {
       });
 
       if (response.ok) {
+        alert('Request accepted')
         // Handle success, maybe update your UI
         console.log('Entry stored in history.');
       } else {
@@ -89,6 +91,12 @@ const Admin = () => {
   function add() {
     seta(a + 1);
   }
+  function minustime() {
+    if(time>6) {settime(time - 5)};
+  }
+  function addtime() {
+    settime(time + 5);
+  }
 
   return (
     <>
@@ -131,6 +139,13 @@ const Admin = () => {
                   <span>Phone No.</span>
                   <h3>{People.call}</h3>
                   <div style={{ float: 'right', display: 'flex', columnGap: '20px', marginTop: '-20px' }}>
+
+                    <div style={{display:'flex',flexDirection:'column'}}>
+                  <h3 >Come after {time} minutes</h3>
+              <div style={{ display: 'flex', columnGap: '20px', width: 'fit-content', borderRadius: '100px', alignItems: 'center', margin: 'auto' }}>
+                <button style={{ borderRadius: '100px', color: 'orange', backgroundColor: '#1c2c52' }} onClick={minustime} >-</button>
+                <button style={{ borderRadius: '100px', color: 'orange', backgroundColor: '#1c2c52' }} onClick={addtime}>+</button>
+              </div></div>
                     <button style={{ backgroundColor: 'green' }} onClick={()=> gotoaccept(People)} >Accept</button>
                     {/* <button>Send email</button> */}
                   </div>

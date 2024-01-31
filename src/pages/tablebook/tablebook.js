@@ -229,7 +229,7 @@ function Tablebook() {
 
                     <div style={{ display: 'flex', columnGap: '20px' }}>
                       <img src={require('../../images/global.png')} width={20} alt="" />
-                      <span>  {res.reswebsite}</span>
+                      <span> <a href="" style={{color:'black'}}> {res.reswebsite}</a> </span>
 
 
                     </div>

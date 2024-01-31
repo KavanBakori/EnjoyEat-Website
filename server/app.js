@@ -128,11 +128,13 @@ app.put('/updateseats/:resname', async (req, res) => {
     }
 });
 
-app.post('/history',async(req,res)=>{
+app.post('/history/:time',async(req,res)=>{
    try{
 
    
-    const { name, email, call,persons,Restaurantname } = req.body;
+     const { name, email, call,persons,Restaurantname } = req.body;
+     const time = req.params.time;
+     console.log(time)
     const final = new History({
 
         name:name,
@@ -154,8 +156,8 @@ app.post('/history',async(req,res)=>{
   const mailOption = {
     from: 'kavan2269@gmail.com',
     to: email,
-    subject: 'From EnjoyEat',
-    html: '<p> Hello ' + name + ' </br> <h1>Please come after 10 minutes. </h1> </br> <p>Elevate your dining experience with Enjoy Eat, a cutting-edge restaurant queue management system that lets you savor your meal stress-free, ensuring you make the most of your time at your favorite eatery</P> <p>' 
+    subject: 'From '+ Restaurantname,
+    html: '<p> Hello ' + name + ' </br> <h1>Please come after ' + time + ' minutes. </h1> </br> <p>Elevate your dining experience with Enjoy Eat, a cutting-edge restaurant queue management system that lets you savor your meal stress-free, ensuring you make the most of your time at your favorite eatery</P> <p>' 
 }
 // console.log(mailOption);
 transporter.sendMail(mailOption, function (error, info) {
@@ -164,6 +166,7 @@ transporter.sendMail(mailOption, function (error, info) {
     }
     else {
         console.log("Email sent");
+        alert("Email sent");
     }
 });
        
@@ -180,6 +183,7 @@ transporter.sendMail(mailOption, function (error, info) {
    }
 
 })
+
 
 app.get('/fetchhistory/:resname', async (req,res)=>{
    try{

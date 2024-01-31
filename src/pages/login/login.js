@@ -102,7 +102,7 @@ function Login() {
 
   return (
     <Fragment>
-      <div className="main">
+      <div className="main" style={{marginTop:'7%'}}>
         <input type="checkbox" id="chk" aria-hidden="true" />
 
 		<div className="signup">
